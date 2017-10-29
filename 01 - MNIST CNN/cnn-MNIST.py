@@ -61,7 +61,7 @@ def max_pool_2x2(x):
     """
     return tf.nn.max_pool(x, ksize=[1,2,2,1], strides=[1,2,2,1], padding='SAME')
 
-#
+
 def variable_summaries(var):
     """ Function for the TensorBoard summaries
     Adds the mean, standard deviation and histogram to the TensorBoard summaries
@@ -162,7 +162,7 @@ with tf.variable_scope('softmax'):
                             initializer=tf.random_normal_initializer())
         variable_summaries(b)
 
-    y_conv = tf.matmul(fc1_drop, w) + b
+    y_conv = td.add(tf.matmul(fc1_drop, w), b)
 
 with tf.name_scope('loss'):
     # Define loss
